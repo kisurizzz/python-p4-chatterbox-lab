@@ -32,6 +32,7 @@ def messages():
 
 @app.route('/messages/<int:id>', methods=['GET', 'PATCH', 'DELETE'])
 def message_by_id(id):
+
     message = Message.query.filter_by(id=id).first()
     if not message:
         return make_response(jsonify({'error': 'Message not found'}), 404)
